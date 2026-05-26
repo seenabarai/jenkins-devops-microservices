@@ -54,7 +54,7 @@ pipeline {
 		stage('Build Docker Image') {
 			steps{
 				script {
-					def dockerImage = docker.build(
+					 dockerImage = docker.build(
                          "seenabarai/currency-exchange-devops:${env.BUILD_NUMBER}"
                     )
 				}
