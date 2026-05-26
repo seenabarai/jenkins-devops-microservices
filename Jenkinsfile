@@ -1,7 +1,9 @@
 pipeline {
 	agent any
 
-
+	tools {
+        jdk 'MyJDK'
+    }
 
 	environment {
 		dockerHome = tool 'MyDocker'
