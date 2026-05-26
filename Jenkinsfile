@@ -54,19 +54,25 @@ pipeline {
 		stage('Build Docker Image') {
 			steps{
 				script {
-					def dockerImage = docker.build("seenabarai/currency-exchange-devops:${env.BUILD_TAG}")
+					def dockerImage = docker.build(
+                         "seenabarai/currency-exchange-devops:${env.BUILD_NUMBER}"
+                    )
 				}
 			}
 		}
 		stage('Push Docker Image') {
-			steps{
-				script {
-					docker.withRegistry('', 'dockerhub')
-					dockerImage.push();
-					dockerImage.push('latest');
-				}
-			}
-		}
+            steps {
+                script {
+
+                     docker.withRegistry('', 'dockerhub') {
+
+                     dockerImage.push("${env.BUILD_NUMBER}")
+                     dockerImage.push("latest")
+
+            }
+        }
+    }
+}
 
     }
 	post{
