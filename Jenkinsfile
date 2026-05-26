@@ -8,7 +8,7 @@ pipeline {
 
 	environment {
 		dockerHome = tool 'MyDocker'
-		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+		PATH = "$dockerHome/bin:$PATH"
         
 
 	}
