@@ -1,9 +1,13 @@
 pipeline {
 	agent any
 
+	tools {
+        jdk 'jdk11'
+        maven 'MyMaven'
+    }
+
 	environment {
 		dockerHome = tool 'MyDocker'
-		mavenHome = tool 'MyMaven'
 		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
         
 
